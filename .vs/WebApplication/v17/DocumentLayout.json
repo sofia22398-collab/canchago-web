@@ -1,0 +1,358 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\canchago-web\\app\\mis-reservas\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:canchago-web\\app\\mis-reservas\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\canchago-web\\app\\layout.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:canchago-web\\app\\layout.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\canchago-web\\app\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:canchago-web\\app\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\canchago-web\\app\\login\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:canchago-web\\app\\login\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\canchago-web\\app\\register\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:canchago-web\\app\\register\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\canchago-web\\app\\admin\\canchas\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:canchago-web\\app\\admin\\canchas\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\canchago-web\\next.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:canchago-web\\next.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\partidos\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:canchago-web\\app\\partidos\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\canchago-web\\app\\calendario\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:canchago-web\\app\\calendario\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\canchago-web\\app\\admin\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:canchago-web\\app\\admin\\page.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\controllers\\partidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:controllers\\partidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\controllers\\reservascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:controllers\\reservascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\models\\partido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:models\\partido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\models\\partidojugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:models\\partidojugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\controllers\\canchas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:controllers\\canchas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\models\\cancha.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:models\\cancha.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|c:\\users\\sof\u00EDacamachosol\u00EDs\\onedrive - innova seguros\\escritorio\\webapplication\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0B3B3A-1B1C-463E-A6BE-798E57C2AD7F}|CanchaGO.csproj|solutionrelative:services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "page.tsx",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\mis-reservas\\page.tsx",
+              "RelativeDocumentMoniker": "canchago-web\\app\\mis-reservas\\page.tsx",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\mis-reservas\\page.tsx",
+              "RelativeToolTip": "canchago-web\\app\\mis-reservas\\page.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-25T22:25:17.004Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "layout.tsx",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\layout.tsx",
+              "RelativeDocumentMoniker": "canchago-web\\app\\layout.tsx",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\layout.tsx",
+              "RelativeToolTip": "canchago-web\\app\\layout.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-28T20:12:48.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-28T17:53:07.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "page.tsx",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\register\\page.tsx",
+              "RelativeDocumentMoniker": "canchago-web\\app\\register\\page.tsx",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\register\\page.tsx",
+              "RelativeToolTip": "canchago-web\\app\\register\\page.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-28T17:49:42.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "page.tsx",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\login\\page.tsx",
+              "RelativeDocumentMoniker": "canchago-web\\app\\login\\page.tsx",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\login\\page.tsx",
+              "RelativeToolTip": "canchago-web\\app\\login\\page.tsx",
+              "ViewState": "AgIAACYAAAAAAAAAAAAmwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-28T17:47:33.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "page.tsx",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\admin\\canchas\\page.tsx",
+              "RelativeDocumentMoniker": "canchago-web\\app\\admin\\canchas\\page.tsx",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\admin\\canchas\\page.tsx",
+              "RelativeToolTip": "canchago-web\\app\\admin\\canchas\\page.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-28T17:25:25.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PartidosController.cs",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Controllers\\PartidosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PartidosController.cs",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Controllers\\PartidosController.cs",
+              "RelativeToolTip": "Controllers\\PartidosController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAYwD0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T19:46:41.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T15:12:33.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "page.tsx",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\page.tsx",
+              "RelativeDocumentMoniker": "canchago-web\\app\\page.tsx",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\page.tsx",
+              "RelativeToolTip": "canchago-web\\app\\page.tsx",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAiwKYBAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-25T20:59:00.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ReservasController.cs",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Controllers\\ReservasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReservasController.cs",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Controllers\\ReservasController.cs",
+              "RelativeToolTip": "Controllers\\ReservasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-25T23:55:31.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PartidoJugador.cs",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Models\\PartidoJugador.cs",
+              "RelativeDocumentMoniker": "Models\\PartidoJugador.cs",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Models\\PartidoJugador.cs",
+              "RelativeToolTip": "Models\\PartidoJugador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T19:46:12.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "page.tsx",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\partidos\\page.tsx",
+              "RelativeDocumentMoniker": "canchago-web\\app\\partidos\\page.tsx",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\partidos\\page.tsx",
+              "RelativeToolTip": "canchago-web\\app\\partidos\\page.tsx",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAqwLcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-27T19:52:25.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Canchas.cs",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Controllers\\Canchas.cs",
+              "RelativeDocumentMoniker": "Controllers\\Canchas.cs",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Controllers\\Canchas.cs",
+              "RelativeToolTip": "Controllers\\Canchas.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwDYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T17:49:54.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAACYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T16:12:19.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "next.config.ts",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\next.config.ts",
+              "RelativeDocumentMoniker": "canchago-web\\next.config.ts",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\next.config.ts",
+              "RelativeToolTip": "canchago-web\\next.config.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-28T17:53:53.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Cancha.cs",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Models\\Cancha.cs",
+              "RelativeDocumentMoniker": "Models\\Cancha.cs",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Models\\Cancha.cs",
+              "RelativeToolTip": "Models\\Cancha.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T17:51:02.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Services\\EmailService.cs",
+              "RelativeToolTip": "Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T16:12:02.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "page.tsx",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\admin\\page.tsx",
+              "RelativeDocumentMoniker": "canchago-web\\app\\admin\\page.tsx",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\admin\\page.tsx",
+              "RelativeToolTip": "canchago-web\\app\\admin\\page.tsx",
+              "ViewState": "AgIAAF0BAAAAAAAAAAAqwMYBAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-25T23:49:36.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "page.tsx",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\calendario\\page.tsx",
+              "RelativeDocumentMoniker": "canchago-web\\app\\calendario\\page.tsx",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\canchago-web\\app\\calendario\\page.tsx",
+              "RelativeToolTip": "canchago-web\\app\\calendario\\page.tsx",
+              "ViewState": "AgIAANEAAAAAAAAAAAAmwPIAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-26T15:51:01.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Partido.cs",
+              "DocumentMoniker": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Models\\Partido.cs",
+              "RelativeDocumentMoniker": "Models\\Partido.cs",
+              "ToolTip": "C:\\Users\\Sof\u00EDaCamachoSol\u00EDs\\OneDrive - Innova Seguros\\Escritorio\\WebApplication\\Models\\Partido.cs",
+              "RelativeToolTip": "Models\\Partido.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T19:44:30.444Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
