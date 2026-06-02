@@ -33,7 +33,7 @@ namespace CanchaGo.Controllers
         [HttpGet("disponibilidad")]
         public async Task<IActionResult> Disponibilidad(int canchaId, DateTime fecha)
         {
-            var inicio = fecha.Date;
+            var inicio = DateTime.SpecifyKind(fecha.Date, DateTimeKind.Utc);
             var fin = inicio.AddDays(1);
 
             var reservas = await _context.Reservas
@@ -82,10 +82,12 @@ namespace CanchaGo.Controllers
         [HttpPost]
         public async Task<IActionResult> CrearReserva(Reserva reserva)
         {
+            reserva.Fecha = DateTime.SpecifyKind(reserva.Fecha.Date, DateTimeKind.Utc);
+
             if (reserva.HoraInicio >= reserva.HoraFin)
                 return BadRequest("La hora de inicio debe ser menor que la hora fin.");
 
-            var inicio = reserva.Fecha.Date;
+            var inicio = reserva.Fecha;
             var fin = inicio.AddDays(1);
 
             var existeReserva = await _context.Reservas.AnyAsync(r =>
@@ -133,7 +135,7 @@ namespace CanchaGo.Controllers
                 Nivel = "Libre",
                 CuposTotales = reserva.CantidadJugadores,
                 Estado = "Abierto",
-                FechaCreacion = DateTime.Now
+                FechaCreacion = DateTime.UtcNow
             };
 
             _context.Partidos.Add(partido);
@@ -143,7 +145,7 @@ namespace CanchaGo.Controllers
             {
                 PartidoId = partido.Id,
                 UsuarioId = reserva.UsuarioId,
-                FechaUnion = DateTime.Now
+                FechaUnion = DateTime.UtcNow
             };
 
             _context.PartidoJugadores.Add(jugadorCreador);
@@ -181,32 +183,9 @@ namespace CanchaGo.Controllers
 
             reserva.EstadoPago = "Pagado";
             reserva.MetodoPago = "SINPE";
-            reserva.FechaPago = DateTime.Now;
+            reserva.FechaPago = DateTime.UtcNow;
 
             await _context.SaveChangesAsync();
-
-            try
-            {
-                if (reserva.Usuario != null && reserva.Cancha != null)
-                {
-                    await _emailService.EnviarCorreoAsync(
-                        reserva.Usuario.Correo,
-                        "Pago confirmado - CanchaGo",
-                        $@"
-                        <h2>Pago confirmado ✅</h2>
-                        <p>Hola {reserva.Usuario.Nombre}, el pago de tu reserva fue confirmado.</p>
-                        <p><strong>Cancha:</strong> {reserva.Cancha.Nombre}</p>
-                        <p><strong>Fecha:</strong> {reserva.Fecha:dd/MM/yyyy}</p>
-                        <p><strong>Hora:</strong> {reserva.HoraInicio:hh\:mm} - {reserva.HoraFin:hh\:mm}</p>
-                        <p><strong>Monto:</strong> ₡{reserva.MontoTotal:N2}</p>
-                        <p><strong>Método de pago:</strong> {reserva.MetodoPago}</p>
-                        "
-                    );
-                }
-            }
-            catch
-            {
-            }
 
             return Ok(reserva);
         }
@@ -225,27 +204,6 @@ namespace CanchaGo.Controllers
             reserva.Estado = "Cancelada";
 
             await _context.SaveChangesAsync();
-
-            try
-            {
-                if (reserva.Usuario != null && reserva.Cancha != null)
-                {
-                    await _emailService.EnviarCorreoAsync(
-                        reserva.Usuario.Correo,
-                        "Reserva cancelada - CanchaGo",
-                        $@"
-                        <h2>Reserva cancelada</h2>
-                        <p>Hola {reserva.Usuario.Nombre}, tu reserva fue cancelada.</p>
-                        <p><strong>Cancha:</strong> {reserva.Cancha.Nombre}</p>
-                        <p><strong>Fecha:</strong> {reserva.Fecha:dd/MM/yyyy}</p>
-                        <p><strong>Hora:</strong> {reserva.HoraInicio:hh\:mm} - {reserva.HoraFin:hh\:mm}</p>
-                        "
-                    );
-                }
-            }
-            catch
-            {
-            }
 
             return Ok(reserva);
         }
