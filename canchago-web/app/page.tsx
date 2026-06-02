@@ -21,64 +21,36 @@ const HORARIOS = [
 ];
 
 export default function Home() {
-
     const [canchas, setCanchas] = useState<any[]>([]);
-
-    const [canchaSeleccionada, setCanchaSeleccionada] =
-        useState<any | null>(null);
-
+    const [canchaSeleccionada, setCanchaSeleccionada] = useState<any | null>(null);
     const [fecha, setFecha] = useState("");
-
-    const [horaInicio, setHoraInicio] =
-        useState("19:00");
-
-    const [horaFin, setHoraFin] =
-        useState("20:00");
-
-    const [usuario, setUsuario] =
-        useState<any | null>(null);
-
-    const [horariosOcupados, setHorariosOcupados] =
-        useState<string[]>([]);
+    const [horaInicio, setHoraInicio] = useState("19:00");
+    const [horaFin, setHoraFin] = useState("20:00");
+    const [usuario, setUsuario] = useState<any | null>(null);
+    const [horariosOcupados, setHorariosOcupados] = useState<string[]>([]);
 
     useEffect(() => {
-
-        obtenerCanchas();
-
-        const usuarioGuardado =
-            localStorage.getItem("usuario");
+        const usuarioGuardado = localStorage.getItem("usuario");
 
         if (usuarioGuardado) {
-
-            setUsuario(
-                JSON.parse(usuarioGuardado)
-            );
+            setUsuario(JSON.parse(usuarioGuardado));
+            obtenerCanchas();
         }
 
-        const hoy = new Date()
-            .toISOString()
-            .split("T")[0];
-
+        const hoy = new Date().toISOString().split("T")[0];
         setFecha(hoy);
-
     }, []);
 
     async function obtenerCanchas() {
-
         const response = await fetch(
             "https://canchago-api.onrender.com/api/Canchas"
         );
 
         const data = await response.json();
-
         setCanchas(data);
     }
 
-    async function obtenerDisponibilidad(
-        canchaId: number,
-        fechaSeleccionada: string
-    ) {
-
+    async function obtenerDisponibilidad(canchaId: number, fechaSeleccionada: string) {
         const response = await fetch(
             `https://canchago-api.onrender.com/api/Reservas/disponibilidad?canchaId=${canchaId}&fecha=${fechaSeleccionada}`
         );
@@ -93,144 +65,106 @@ export default function Home() {
     }
 
     async function guardarReserva() {
-
         if (!usuario) {
-
-            alert(
-                "Debes iniciar sesión para reservar."
-            );
-
+            alert("Debes iniciar sesión para reservar.");
             return;
         }
 
         if (!fecha) {
-
-            alert(
-                "Debes seleccionar una fecha."
-            );
-
+            alert("Debes seleccionar una fecha.");
             return;
         }
 
         if (horaInicio >= horaFin) {
-
-            alert(
-                "La hora de inicio debe ser menor que la hora fin."
-            );
-
+            alert("La hora de inicio debe ser menor que la hora fin.");
             return;
         }
 
         const reserva = {
-
             usuarioId: usuario.id,
-
             canchaId: canchaSeleccionada.id,
-
             fecha: `${fecha}T00:00:00`,
-
             horaInicio: `${horaInicio}:00`,
-
             horaFin: `${horaFin}:00`,
-
             cantidadJugadores:
-                canchaSeleccionada.tipoDeporte === "Pickleball"
-                    ? 4
-                    : 2,
-
+                canchaSeleccionada.tipoDeporte === "Pickleball" ? 4 : 2,
             tipoPartido:
-                canchaSeleccionada.tipoDeporte === "Pickleball"
-                    ? "Dobles"
-                    : "Singles",
-
+                canchaSeleccionada.tipoDeporte === "Pickleball" ? "Dobles" : "Singles",
             estado: "Reservada",
-
-            observaciones:
-                "Reserva desde web",
+            observaciones: "Reserva desde web",
         };
 
         const response = await fetch(
             "https://canchago-api.onrender.com/api/Reservas",
             {
                 method: "POST",
-
                 headers: {
                     "Content-Type": "application/json",
                 },
-
                 body: JSON.stringify(reserva),
             }
         );
 
         if (response.ok) {
-
-            await obtenerDisponibilidad(
-                canchaSeleccionada.id,
-                fecha
-            );
-
-            alert(
-                "Reserva creada correctamente ✅"
-            );
-
+            await obtenerDisponibilidad(canchaSeleccionada.id, fecha);
+            alert("Reserva creada correctamente ✅");
         } else {
+            const error = await response.text();
 
-            const error =
-                await response.text();
-
-            if (
-                error.includes(
-                    "Ya existe una reserva"
-                )
-            ) {
-
-                alert(
-                    "Ese horario ya está reservado. Por favor selecciona otra hora."
-                );
-
+            if (error.includes("Ya existe una reserva")) {
+                alert("Ese horario ya está reservado. Por favor selecciona otra hora.");
             } else {
-
-                alert(
-                    "No se pudo crear la reserva."
-                );
+                alert("No se pudo crear la reserva.");
             }
         }
     }
 
-    function seleccionarHora(
-        hora: string
-    ) {
-
+    function seleccionarHora(hora: string) {
         setHoraInicio(hora);
 
         const siguienteHora =
-
-            String(
-                Number(
-                    hora.substring(0, 2)
-                ) + 1
-            ).padStart(2, "0")
-
-            + ":00";
+            String(Number(hora.substring(0, 2)) + 1).padStart(2, "0") + ":00";
 
         setHoraFin(siguienteHora);
     }
 
     function abrirModal(cancha: any) {
-
         setCanchaSeleccionada(cancha);
 
-        const hoy = new Date()
-            .toISOString()
-            .split("T")[0];
+        const hoy = new Date().toISOString().split("T")[0];
 
         setFecha(hoy);
-
         setHoraInicio("19:00");
-
         setHoraFin("20:00");
 
         obtenerDisponibilidad(cancha.id, hoy);
+    }
+
+    if (!usuario) {
+        return (
+            <main className="min-h-screen bg-black text-white flex items-center justify-center px-6">
+                <div className="max-w-md w-full text-center">
+                    <h1 className="text-6xl font-bold text-green-500 mb-4">
+                        CanchaGo
+                    </h1>
+
+                    <p className="text-gray-300 text-lg mb-2">
+                        Reserva tus canchas de tenis y pickleball.
+                    </p>
+
+                    <p className="text-gray-500 text-sm mb-8">
+                        Inicia sesión para ver disponibilidad y realizar reservas.
+                    </p>
+
+                    <a
+                        href="/login"
+                        className="block w-full bg-green-500 hover:bg-green-400 transition-all duration-200 text-black font-bold py-4 rounded-2xl"
+                    >
+                        Iniciar sesión
+                    </a>
+                </div>
+            </main>
+        );
     }
 
     return (
@@ -247,66 +181,57 @@ export default function Home() {
                         </p>
                     </div>
 
-                    {usuario ? (
-                        <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 w-full md:w-auto">
-                            {usuario?.rol === "Admin" && (
-                                <a
-                                    href="/admin"
-                                    className="w-full sm:w-auto text-center bg-green-500 hover:bg-green-400 transition-all duration-200 text-black px-4 py-3 rounded-xl font-bold"
-                                >
-                                    Admin
-                                </a>
-                            )}
-
+                    <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 w-full md:w-auto">
+                        {usuario?.rol === "Admin" && (
                             <a
-                                href="/calendario"
-                                className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold"
+                                href="/admin"
+                                className="w-full sm:w-auto text-center bg-green-500 hover:bg-green-400 transition-all duration-200 text-black px-4 py-3 rounded-xl font-bold"
                             >
-                                Calendario
+                                Admin
                             </a>
+                        )}
 
-                            <a
-                                href="/mis-reservas"
-                                className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold"
-                            >
-                                Mis Reservas
-                            </a>
-
-                            <a
-                                href="/partidos"
-                                className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold"
-                            >
-                                Partidos
-                            </a>
-
-                            <button
-                                onClick={() => {
-                                    localStorage.removeItem("usuario");
-                                    window.location.href = "/login";
-                                }}
-                                className="w-full sm:w-auto bg-red-500 hover:bg-red-400 transition-all duration-200 px-4 py-3 rounded-xl font-bold text-white"
-                            >
-                                Cerrar sesión
-                            </button>
-
-                            <div className="text-left sm:text-right mt-2 sm:mt-0">
-                                <p className="font-bold text-green-400">
-                                    {usuario.nombre}
-                                </p>
-
-                                <p className="text-sm text-gray-400 break-all">
-                                    {usuario.correo}
-                                </p>
-                            </div>
-                        </div>
-                    ) : (
                         <a
-                            href="/login"
-                            className="w-full sm:w-auto text-center bg-green-500 hover:bg-green-400 transition-all duration-200 text-black px-5 py-3 rounded-xl font-bold"
+                            href="/calendario"
+                            className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold"
                         >
-                            Iniciar sesión
+                            Calendario
                         </a>
-                    )}
+
+                        <a
+                            href="/mis-reservas"
+                            className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold"
+                        >
+                            Mis Reservas
+                        </a>
+
+                        <a
+                            href="/partidos"
+                            className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold"
+                        >
+                            Partidos
+                        </a>
+
+                        <button
+                            onClick={() => {
+                                localStorage.removeItem("usuario");
+                                window.location.href = "/login";
+                            }}
+                            className="w-full sm:w-auto bg-red-500 hover:bg-red-400 transition-all duration-200 px-4 py-3 rounded-xl font-bold text-white"
+                        >
+                            Cerrar sesión
+                        </button>
+
+                        <div className="text-left sm:text-right mt-2 sm:mt-0">
+                            <p className="font-bold text-green-400">
+                                {usuario.nombre}
+                            </p>
+
+                            <p className="text-sm text-gray-400 break-all">
+                                {usuario.correo}
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -384,14 +309,14 @@ export default function Home() {
                                         disabled={ocupado}
                                         onClick={() => seleccionarHora(hora)}
                                         className={`
-                                        p-3 rounded-xl font-bold transition-all duration-200 text-sm md:text-base
-                                        ${ocupado
+                                            p-3 rounded-xl font-bold transition-all duration-200 text-sm md:text-base
+                                            ${ocupado
                                                 ? "bg-red-500 text-white cursor-not-allowed"
                                                 : seleccionado
                                                     ? "bg-green-500 text-black"
                                                     : "bg-zinc-800 hover:bg-zinc-700"
                                             }
-                                    `}
+                                        `}
                                     >
                                         {hora}
                                     </button>
