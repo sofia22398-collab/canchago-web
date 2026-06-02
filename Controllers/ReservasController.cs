@@ -50,28 +50,7 @@ namespace CanchaGo.Controllers
                 })
                 .ToListAsync();
 
-            var bloqueos = await _context.HorariosBloqueados
-                .Where(b =>
-                    b.CanchaId == canchaId &&
-                    b.Fecha.Date == fecha.Date)
-                .Select(b => new
-                {
-                    b.Id,
-                    b.CanchaId,
-                    b.Fecha,
-                    b.HoraInicio,
-                    b.HoraFin,
-                    Tipo = "Bloqueo",
-                    Motivo = b.Motivo ?? "Bloqueado"
-                })
-                .ToListAsync();
-
-            var ocupados = reservas
-                .Concat(bloqueos)
-                .OrderBy(x => x.HoraInicio)
-                .ToList();
-
-            return Ok(ocupados);
+            return Ok(reservas);
         }
 
         [HttpPost]
