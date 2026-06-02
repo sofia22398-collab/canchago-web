@@ -17,7 +17,7 @@ export default function RegisterPage() {
             return;
         }
 
-        const response = await fetch("https://localhost:7174/api/Usuarios/registro", {
+        const response = await fetch("https://canchago-api.onrender.com/api/Usuarios/registro", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

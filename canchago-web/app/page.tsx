@@ -66,7 +66,7 @@ export default function Home() {
     async function obtenerCanchas() {
 
         const response = await fetch(
-            "https://localhost:7174/api/Canchas"
+            "https://canchago-api.onrender.com/api/Canchas"
         );
 
         const data = await response.json();
@@ -80,7 +80,7 @@ export default function Home() {
     ) {
 
         const response = await fetch(
-            `https://localhost:7174/api/Reservas/disponibilidad?canchaId=${canchaId}&fecha=${fechaSeleccionada}`
+            `https://canchago-api.onrender.com/api/Reservas/disponibilidad?canchaId=${canchaId}&fecha=${fechaSeleccionada}`
         );
 
         const data = await response.json();
@@ -150,7 +150,7 @@ export default function Home() {
         };
 
         const response = await fetch(
-            "https://localhost:7174/api/Reservas",
+            "https://canchago-api.onrender.com/api/Reservas",
             {
                 method: "POST",
 

@@ -10,7 +10,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
 
     async function login() {
-        const response = await fetch("https://localhost:7174/api/Usuarios/login", {
+        const response = await fetch("https://canchago-api.onrender.com/api/Usuarios/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

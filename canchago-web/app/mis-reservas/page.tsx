@@ -22,7 +22,7 @@ export default function MisReservasPage() {
 
     async function obtenerReservas(usuarioId: number) {
         const response = await fetch(
-            `https://localhost:7174/api/Reservas/usuario/${usuarioId}`
+            `https://canchago-api.onrender.com/api/Reservas/usuario/${usuarioId}`
         );
 
         const data = await response.json();
@@ -35,7 +35,7 @@ export default function MisReservasPage() {
         if (!confirmar) return;
 
         const response = await fetch(
-            `https://localhost:7174/api/Reservas/${id}`,
+            `https://canchago-api.onrender.com/api/Reservas/${id}`,
             {
                 method: "DELETE",
             }

@@ -33,7 +33,7 @@ export default function CalendarioPage() {
     }, [canchaId, fecha]);
 
     async function obtenerCanchas() {
-        const response = await fetch("https://localhost:7174/api/Canchas");
+        const response = await fetch("https://canchago-api.onrender.com/api/Canchas");
         const data = await response.json();
 
         setCanchas(data);
@@ -47,7 +47,7 @@ export default function CalendarioPage() {
         if (!canchaId || !fecha) return;
 
         const resReservas = await fetch(
-            `https://localhost:7174/api/Reservas/disponibilidad?canchaId=${canchaId}&fecha=${fecha}`
+            `https://canchago-api.onrender.com/api/Reservas/disponibilidad?canchaId=${canchaId}&fecha=${fecha}`
         );
 
         const dataReservas = await resReservas.json();
@@ -147,7 +147,7 @@ export default function CalendarioPage() {
             observaciones: "Reserva desde calendario",
         };
 
-        const response = await fetch("https://localhost:7174/api/Reservas", {
+        const response = await fetch("https://canchago-api.onrender.com/api/Reservas", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

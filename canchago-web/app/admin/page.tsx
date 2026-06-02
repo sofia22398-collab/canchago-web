@@ -35,13 +35,13 @@ export default function AdminPage() {
     }, []);
 
     async function obtenerReservas() {
-        const response = await fetch("https://localhost:7174/api/Reservas");
+        const response = await fetch("https://canchago-api.onrender.com/api/Reservas");
         const data = await response.json();
         setReservas(data);
     }
 
     async function obtenerCanchas() {
-        const response = await fetch("https://localhost:7174/api/Canchas");
+        const response = await fetch("https://canchago-api.onrender.com/api/Canchas");
         const data = await response.json();
 
         setCanchas(data);
@@ -52,7 +52,7 @@ export default function AdminPage() {
     }
 
     async function obtenerBloqueos() {
-        const response = await fetch("https://localhost:7174/api/HorariosBloqueados");
+        const response = await fetch("https://canchago-api.onrender.com/api/HorariosBloqueados");
         const data = await response.json();
         setBloqueos(data);
     }
@@ -76,7 +76,7 @@ export default function AdminPage() {
             motivo: motivo || "Bloqueado por administración",
         };
 
-        const response = await fetch("https://localhost:7174/api/HorariosBloqueados", {
+        const response = await fetch("https://canchago-api.onrender.com/api/HorariosBloqueados", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -102,7 +102,7 @@ export default function AdminPage() {
         if (!confirmar) return;
 
         const response = await fetch(
-            `https://localhost:7174/api/HorariosBloqueados/${id}`,
+            `https://canchago-api.onrender.com/api/HorariosBloqueados/${id}`,
             {
                 method: "DELETE",
             }
@@ -121,7 +121,7 @@ export default function AdminPage() {
         if (!confirmar) return;
 
         const response = await fetch(
-            `https://localhost:7174/api/Reservas/${id}`,
+            `https://canchago-api.onrender.com/api/Reservas/${id}`,
             {
                 method: "DELETE",
             }
@@ -140,7 +140,7 @@ export default function AdminPage() {
         if (!confirmar) return;
 
         const response = await fetch(
-            `https://localhost:7174/api/Reservas/${id}/pago`,
+            `https://canchago-api.onrender.com/api/Reservas/${id}/pago`,
             {
                 method: "PUT",
             }

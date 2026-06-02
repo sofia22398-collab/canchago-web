@@ -21,7 +21,7 @@ export default function PartidosPage() {
     }, []);
 
     async function obtenerPartidos() {
-        const response = await fetch("https://localhost:7174/api/Partidos");
+        const response = await fetch("https://canchago-api.onrender.com/api/Partidos");
         const data = await response.json();
         setPartidos(data);
     }
@@ -30,7 +30,7 @@ export default function PartidosPage() {
         if (!usuario) return;
 
         const response = await fetch(
-            `https://localhost:7174/api/Partidos/${partidoId}/unirse/${usuario.id}`,
+            `https://canchago-api.onrender.com/api/Partidos/${partidoId}/unirse/${usuario.id}`,
             {
                 method: "POST",
             }
@@ -49,7 +49,7 @@ export default function PartidosPage() {
         if (!usuario) return;
 
         const response = await fetch(
-            `https://localhost:7174/api/Partidos/${partidoId}/salir/${usuario.id}`,
+            `https://canchago-api.onrender.com/api/Partidos/${partidoId}/salir/${usuario.id}`,
             {
                 method: "DELETE",
             }
