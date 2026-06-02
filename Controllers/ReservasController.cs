@@ -33,10 +33,14 @@ namespace CanchaGo.Controllers
         [HttpGet("disponibilidad")]
         public async Task<IActionResult> Disponibilidad(int canchaId, DateTime fecha)
         {
+            var inicio = fecha.Date;
+            var fin = inicio.AddDays(1);
+
             var reservas = await _context.Reservas
                 .Where(r =>
                     r.CanchaId == canchaId &&
-                    r.Fecha.Date == fecha.Date &&
+                    r.Fecha >= inicio &&
+                    r.Fecha < fin &&
                     r.Estado != "Cancelada")
                 .Select(r => new
                 {
@@ -50,7 +54,29 @@ namespace CanchaGo.Controllers
                 })
                 .ToListAsync();
 
-            return Ok(reservas);
+            var bloqueos = await _context.HorariosBloqueados
+                .Where(b =>
+                    b.CanchaId == canchaId &&
+                    b.Fecha >= inicio &&
+                    b.Fecha < fin)
+                .Select(b => new
+                {
+                    b.Id,
+                    b.CanchaId,
+                    b.Fecha,
+                    b.HoraInicio,
+                    b.HoraFin,
+                    Tipo = "Bloqueo",
+                    Motivo = b.Motivo ?? "Bloqueado"
+                })
+                .ToListAsync();
+
+            var ocupados = reservas
+                .Concat(bloqueos)
+                .OrderBy(x => x.HoraInicio)
+                .ToList();
+
+            return Ok(ocupados);
         }
 
         [HttpPost]
@@ -59,9 +85,13 @@ namespace CanchaGo.Controllers
             if (reserva.HoraInicio >= reserva.HoraFin)
                 return BadRequest("La hora de inicio debe ser menor que la hora fin.");
 
+            var inicio = reserva.Fecha.Date;
+            var fin = inicio.AddDays(1);
+
             var existeReserva = await _context.Reservas.AnyAsync(r =>
                 r.CanchaId == reserva.CanchaId &&
-                r.Fecha.Date == reserva.Fecha.Date &&
+                r.Fecha >= inicio &&
+                r.Fecha < fin &&
                 r.Estado != "Cancelada" &&
                 reserva.HoraInicio < r.HoraFin &&
                 reserva.HoraFin > r.HoraInicio
@@ -72,7 +102,8 @@ namespace CanchaGo.Controllers
 
             var existeBloqueo = await _context.HorariosBloqueados.AnyAsync(b =>
                 b.CanchaId == reserva.CanchaId &&
-                b.Fecha.Date == reserva.Fecha.Date &&
+                b.Fecha >= inicio &&
+                b.Fecha < fin &&
                 reserva.HoraInicio < b.HoraFin &&
                 reserva.HoraFin > b.HoraInicio
             );
@@ -118,29 +149,6 @@ namespace CanchaGo.Controllers
             _context.PartidoJugadores.Add(jugadorCreador);
             await _context.SaveChangesAsync();
 
-            var usuario = await _context.Usuarios.FindAsync(reserva.UsuarioId);
-
-            try
-            {
-                if (reserva.Usuario != null && reserva.Cancha != null)
-                {
-                    await _emailService.EnviarCorreoAsync(
-                        reserva.Usuario.Correo,
-                        "Reserva cancelada - CanchaGo",
-                        $@"
-            <h2>Reserva cancelada</h2>
-            <p>Hola {reserva.Usuario.Nombre}, tu reserva fue cancelada.</p>
-            <p><strong>Cancha:</strong> {reserva.Cancha.Nombre}</p>
-            <p><strong>Fecha:</strong> {reserva.Fecha:dd/MM/yyyy}</p>
-            <p><strong>Hora:</strong> {reserva.HoraInicio:hh\:mm} - {reserva.HoraFin:hh\:mm}</p>
-            "
-                    );
-                }
-            }
-            catch
-            {
-            }
-
             return Ok(reserva);
         }
 
@@ -177,21 +185,27 @@ namespace CanchaGo.Controllers
 
             await _context.SaveChangesAsync();
 
-            if (reserva.Usuario != null && reserva.Cancha != null)
+            try
             {
-                await _emailService.EnviarCorreoAsync(
-                    reserva.Usuario.Correo,
-                    "Pago confirmado - CanchaGo",
-                    $@"
-                    <h2>Pago confirmado ✅</h2>
-                    <p>Hola {reserva.Usuario.Nombre}, el pago de tu reserva fue confirmado.</p>
-                    <p><strong>Cancha:</strong> {reserva.Cancha.Nombre}</p>
-                    <p><strong>Fecha:</strong> {reserva.Fecha:dd/MM/yyyy}</p>
-                    <p><strong>Hora:</strong> {reserva.HoraInicio:hh\:mm} - {reserva.HoraFin:hh\:mm}</p>
-                    <p><strong>Monto:</strong> ₡{reserva.MontoTotal:N2}</p>
-                    <p><strong>Método de pago:</strong> {reserva.MetodoPago}</p>
-                    "
-                );
+                if (reserva.Usuario != null && reserva.Cancha != null)
+                {
+                    await _emailService.EnviarCorreoAsync(
+                        reserva.Usuario.Correo,
+                        "Pago confirmado - CanchaGo",
+                        $@"
+                        <h2>Pago confirmado ✅</h2>
+                        <p>Hola {reserva.Usuario.Nombre}, el pago de tu reserva fue confirmado.</p>
+                        <p><strong>Cancha:</strong> {reserva.Cancha.Nombre}</p>
+                        <p><strong>Fecha:</strong> {reserva.Fecha:dd/MM/yyyy}</p>
+                        <p><strong>Hora:</strong> {reserva.HoraInicio:hh\:mm} - {reserva.HoraFin:hh\:mm}</p>
+                        <p><strong>Monto:</strong> ₡{reserva.MontoTotal:N2}</p>
+                        <p><strong>Método de pago:</strong> {reserva.MetodoPago}</p>
+                        "
+                    );
+                }
+            }
+            catch
+            {
             }
 
             return Ok(reserva);
@@ -212,19 +226,25 @@ namespace CanchaGo.Controllers
 
             await _context.SaveChangesAsync();
 
-            if (reserva.Usuario != null && reserva.Cancha != null)
+            try
             {
-                await _emailService.EnviarCorreoAsync(
-                    reserva.Usuario.Correo,
-                    "Reserva cancelada - CanchaGo",
-                    $@"
-                    <h2>Reserva cancelada</h2>
-                    <p>Hola {reserva.Usuario.Nombre}, tu reserva fue cancelada.</p>
-                    <p><strong>Cancha:</strong> {reserva.Cancha.Nombre}</p>
-                    <p><strong>Fecha:</strong> {reserva.Fecha:dd/MM/yyyy}</p>
-                    <p><strong>Hora:</strong> {reserva.HoraInicio:hh\:mm} - {reserva.HoraFin:hh\:mm}</p>
-                    "
-                );
+                if (reserva.Usuario != null && reserva.Cancha != null)
+                {
+                    await _emailService.EnviarCorreoAsync(
+                        reserva.Usuario.Correo,
+                        "Reserva cancelada - CanchaGo",
+                        $@"
+                        <h2>Reserva cancelada</h2>
+                        <p>Hola {reserva.Usuario.Nombre}, tu reserva fue cancelada.</p>
+                        <p><strong>Cancha:</strong> {reserva.Cancha.Nombre}</p>
+                        <p><strong>Fecha:</strong> {reserva.Fecha:dd/MM/yyyy}</p>
+                        <p><strong>Hora:</strong> {reserva.HoraInicio:hh\:mm} - {reserva.HoraFin:hh\:mm}</p>
+                        "
+                    );
+                }
+            }
+            catch
+            {
             }
 
             return Ok(reserva);
