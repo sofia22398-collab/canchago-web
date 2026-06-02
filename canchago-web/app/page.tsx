@@ -2,22 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+const API_URL = "https://canchago-api.onrender.com";
+
 const HORARIOS = [
-    "07:00",
-    "08:00",
-    "09:00",
-    "10:00",
-    "11:00",
-    "12:00",
-    "13:00",
-    "14:00",
-    "15:00",
-    "16:00",
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
+    "07:00", "08:00", "09:00", "10:00", "11:00",
+    "12:00", "13:00", "14:00", "15:00", "16:00",
+    "17:00", "18:00", "19:00", "20:00", "21:00",
 ];
 
 export default function Home() {
@@ -37,22 +27,18 @@ export default function Home() {
             obtenerCanchas();
         }
 
-        const hoy = new Date().toISOString().split("T")[0];
-        setFecha(hoy);
+        setFecha(new Date().toISOString().split("T")[0]);
     }, []);
 
     async function obtenerCanchas() {
-        const response = await fetch(
-            "https://canchago-api.onrender.com/api/Canchas"
-        );
-
+        const response = await fetch(`${API_URL}/api/Canchas`);
         const data = await response.json();
         setCanchas(data);
     }
 
     async function obtenerDisponibilidad(canchaId: number, fechaSeleccionada: string) {
         const response = await fetch(
-            `https://canchago-api.onrender.com/api/Reservas/disponibilidad?canchaId=${canchaId}&fecha=${fechaSeleccionada}`
+            `${API_URL}/api/Reservas/disponibilidad?canchaId=${canchaId}&fecha=${fechaSeleccionada}`
         );
 
         const data = await response.json();
@@ -70,6 +56,11 @@ export default function Home() {
             return;
         }
 
+        if (!canchaSeleccionada) {
+            alert("Debes seleccionar una cancha.");
+            return;
+        }
+
         if (!fecha) {
             alert("Debes seleccionar una fecha.");
             return;
@@ -83,39 +74,31 @@ export default function Home() {
         const reserva = {
             usuarioId: usuario.id,
             canchaId: canchaSeleccionada.id,
-            fecha: `${fecha}T00:00:00`,
+            fecha: `${fecha}T00:00:00Z`,
             horaInicio: `${horaInicio}:00`,
             horaFin: `${horaFin}:00`,
             cantidadJugadores:
                 canchaSeleccionada.tipoDeporte === "Pickleball" ? 4 : 2,
             tipoPartido:
-                canchaSeleccionada.tipoDeporte === "Pickleball" ? "Dobles" : "Singles",
-            estado: "Reservada",
-            observaciones: "Reserva desde web",
+                canchaSeleccionada.tipoDeporte === "Pickleball" ? "Dobles" : "Singles"
         };
 
-        const response = await fetch(
-            "https://canchago-api.onrender.com/api/Reservas",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(reserva),
-            }
-        );
+        const response = await fetch(`${API_URL}/api/Reservas`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(reserva),
+        });
+
+        const texto = await response.text();
 
         if (response.ok) {
             await obtenerDisponibilidad(canchaSeleccionada.id, fecha);
             alert("Reserva creada correctamente ✅");
+            setCanchaSeleccionada(null);
         } else {
-            const error = await response.text();
-
-            if (error.includes("Ya existe una reserva")) {
-                alert("Ese horario ya está reservado. Por favor selecciona otra hora.");
-            } else {
-                alert("No se pudo crear la reserva.");
-            }
+            alert("Error real del backend: " + texto);
         }
     }
 
@@ -191,24 +174,15 @@ export default function Home() {
                             </a>
                         )}
 
-                        <a
-                            href="/calendario"
-                            className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold"
-                        >
+                        <a href="/calendario" className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold">
                             Calendario
                         </a>
 
-                        <a
-                            href="/mis-reservas"
-                            className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold"
-                        >
+                        <a href="/mis-reservas" className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold">
                             Mis Reservas
                         </a>
 
-                        <a
-                            href="/partidos"
-                            className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold"
-                        >
+                        <a href="/partidos" className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold">
                             Partidos
                         </a>
 
@@ -286,10 +260,7 @@ export default function Home() {
                             min={new Date().toISOString().split("T")[0]}
                             onChange={(e) => {
                                 setFecha(e.target.value);
-                                obtenerDisponibilidad(
-                                    canchaSeleccionada.id,
-                                    e.target.value
-                                );
+                                obtenerDisponibilidad(canchaSeleccionada.id, e.target.value);
                             }}
                             className="w-full mb-4 p-3 rounded-xl bg-black border border-zinc-700 text-white"
                         />
