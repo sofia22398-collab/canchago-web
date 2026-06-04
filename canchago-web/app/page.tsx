@@ -43,10 +43,7 @@ export default function Home() {
 
         const data = await response.json();
 
-        const horas = data.map((r: any) =>
-            r.horaInicio.substring(0, 5)
-        );
-
+        const horas = data.map((r: any) => r.horaInicio.substring(0, 5));
         setHorariosOcupados(horas);
     }
 
@@ -77,10 +74,8 @@ export default function Home() {
             fecha: `${fecha}T00:00:00Z`,
             horaInicio: `${horaInicio}:00`,
             horaFin: `${horaFin}:00`,
-            cantidadJugadores:
-                canchaSeleccionada.tipoDeporte === "Pickleball" ? 4 : 2,
-            tipoPartido:
-                canchaSeleccionada.tipoDeporte === "Pickleball" ? "Dobles" : "Singles"
+            cantidadJugadores: canchaSeleccionada.tipoDeporte === "Pickleball" ? 4 : 2,
+            tipoPartido: canchaSeleccionada.tipoDeporte === "Pickleball" ? "Dobles" : "Singles",
         };
 
         const response = await fetch(`${API_URL}/api/Reservas`, {
@@ -123,11 +118,16 @@ export default function Home() {
         obtenerDisponibilidad(cancha.id, hoy);
     }
 
+    function cerrarSesion() {
+        localStorage.removeItem("usuario");
+        window.location.href = "/login";
+    }
+
     if (!usuario) {
         return (
             <main className="min-h-screen bg-black text-white flex items-center justify-center px-6">
                 <div className="max-w-md w-full text-center">
-                    <h1 className="text-6xl font-bold text-green-500 mb-4">
+                    <h1 className="text-5xl sm:text-6xl font-bold text-green-500 mb-4">
                         CanchaGo
                     </h1>
 
@@ -151,80 +151,101 @@ export default function Home() {
     }
 
     return (
-        <main className="min-h-screen bg-black text-white px-4 py-6 md:p-10">
-            <div className="max-w-7xl mx-auto pb-20">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-                    <div>
-                        <h1 className="text-4xl md:text-5xl font-bold mb-3 text-green-500">
-                            CanchaGo
-                        </h1>
+        <main className="min-h-screen bg-black text-white px-4 py-5 md:p-10">
+            <div className="max-w-7xl mx-auto pb-28 md:pb-10">
 
-                        <p className="text-gray-400 text-base md:text-lg">
-                            Reserva tus canchas de tenis y pickleball fácilmente.
-                        </p>
-                    </div>
+                <header className="mb-7">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
 
-                    <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 w-full md:w-auto">
-                        {usuario?.rol === "Admin" && (
-                            <a
-                                href="/admin"
-                                className="w-full sm:w-auto text-center bg-green-500 hover:bg-green-400 transition-all duration-200 text-black px-4 py-3 rounded-xl font-bold"
-                            >
-                                Admin
-                            </a>
-                        )}
+                        <div>
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-green-500">
+                                CanchaGo
+                            </h1>
 
-                        <a href="/calendario" className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold">
-                            Calendario
-                        </a>
-
-                        <a href="/mis-reservas" className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold">
-                            Mis Reservas
-                        </a>
-
-                        <a href="/partidos" className="w-full sm:w-auto text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-4 py-3 rounded-xl font-bold">
-                            Partidos
-                        </a>
-
-                        <button
-                            onClick={() => {
-                                localStorage.removeItem("usuario");
-                                window.location.href = "/login";
-                            }}
-                            className="w-full sm:w-auto bg-red-500 hover:bg-red-400 transition-all duration-200 px-4 py-3 rounded-xl font-bold text-white"
-                        >
-                            Cerrar sesión
-                        </button>
-
-                        <div className="text-left sm:text-right mt-2 sm:mt-0">
-                            <p className="font-bold text-green-400">
-                                {usuario.nombre}
-                            </p>
-
-                            <p className="text-sm text-gray-400 break-all">
-                                {usuario.correo}
+                            <p className="text-gray-400 text-sm sm:text-base md:text-lg">
+                                Reserva tus canchas de tenis y pickleball fácilmente.
                             </p>
                         </div>
-                    </div>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="space-y-3 lg:space-y-0 lg:flex lg:items-center lg:gap-4">
+                            <div className="flex gap-3 overflow-x-auto pb-2 lg:pb-0 lg:overflow-visible">
+                                {usuario?.rol === "Admin" && (
+                                    <a
+                                        href="/admin"
+                                        className="shrink-0 text-center bg-green-500 hover:bg-green-400 transition-all duration-200 text-black px-5 py-3 rounded-xl font-bold"
+                                    >
+                                        Admin
+                                    </a>
+                                )}
+
+                                <a
+                                    href="/calendario"
+                                    className="shrink-0 text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-5 py-3 rounded-xl font-bold"
+                                >
+                                    Calendario
+                                </a>
+
+                                <a
+                                    href="/mis-reservas"
+                                    className="shrink-0 text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-5 py-3 rounded-xl font-bold"
+                                >
+                                    Mis Reservas
+                                </a>
+
+                                <a
+                                    href="/partidos"
+                                    className="shrink-0 text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-5 py-3 rounded-xl font-bold"
+                                >
+                                    Partidos
+                                </a>
+
+                                <button
+                                    onClick={cerrarSesion}
+                                    className="shrink-0 bg-red-500 hover:bg-red-400 transition-all duration-200 px-5 py-3 rounded-xl font-bold text-white"
+                                >
+                                    Cerrar sesión
+                                </button>
+                            </div>
+
+                            <div className="border-t border-zinc-800 pt-3 lg:border-t-0 lg:pt-0 lg:text-right">
+                                <p className="font-bold text-green-400 leading-tight">
+                                    Hola, {usuario.nombre}
+                                </p>
+
+                                <p className="text-xs sm:text-sm text-gray-400 break-all">
+                                    {usuario.correo}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <section className="mb-5">
+                    <h2 className="text-xl sm:text-2xl font-bold mb-1">
+                        Canchas disponibles
+                    </h2>
+                    <p className="text-sm text-gray-500">
+                        Elegí una cancha para revisar horarios y reservar.
+                    </p>
+                </section>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
                     {canchas.map((cancha) => (
                         <div
                             key={cancha.id}
-                            className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 md:p-6 shadow-lg hover:border-green-500 transition-all duration-200"
+                            className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 md:p-6 shadow-lg hover:border-green-500 transition-all duration-200"
                         >
-                            <div className="flex items-center justify-between mb-4">
-                                <span className="bg-green-500 text-black px-3 py-1 rounded-full text-sm font-semibold">
+                            <div className="flex items-center justify-between mb-4 gap-3">
+                                <span className="bg-green-500 text-black px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
                                     {cancha.tipoDeporte}
                                 </span>
 
-                                <span className="text-green-400 font-bold">
+                                <span className="text-green-400 font-bold text-sm sm:text-base">
                                     ₡{cancha.precioHora}
                                 </span>
                             </div>
 
-                            <h2 className="text-xl md:text-2xl font-bold mb-4">
+                            <h2 className="text-lg md:text-2xl font-bold mb-4">
                                 {cancha.nombre}
                             </h2>
 
@@ -239,9 +260,31 @@ export default function Home() {
                 </div>
             </div>
 
+            <nav className="fixed bottom-0 left-0 right-0 bg-zinc-950 border-t border-zinc-800 grid grid-cols-4 md:hidden z-40">
+                <a href="/" className="py-3 text-center text-xs text-green-400 font-bold">
+                    🏠
+                    <span className="block mt-1">Inicio</span>
+                </a>
+
+                <a href="/calendario" className="py-3 text-center text-xs text-gray-300 font-bold">
+                    📅
+                    <span className="block mt-1">Calendario</span>
+                </a>
+
+                <a href="/mis-reservas" className="py-3 text-center text-xs text-gray-300 font-bold">
+                    🎾
+                    <span className="block mt-1">Reservas</span>
+                </a>
+
+                <a href="/partidos" className="py-3 text-center text-xs text-gray-300 font-bold">
+                    👥
+                    <span className="block mt-1">Partidos</span>
+                </a>
+            </nav>
+
             {canchaSeleccionada && (
                 <div className="fixed inset-0 bg-black/80 flex items-end md:items-center justify-center p-4 z-50 overflow-y-auto">
-                    <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-5 sm:p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
+                    <div className="bg-zinc-900 border border-zinc-700 rounded-t-3xl md:rounded-2xl p-5 sm:p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
                         <h2 className="text-2xl font-bold text-green-500 mb-2">
                             Reservar {canchaSeleccionada.nombre}
                         </h2>
@@ -280,14 +323,14 @@ export default function Home() {
                                         disabled={ocupado}
                                         onClick={() => seleccionarHora(hora)}
                                         className={`
-                                            p-3 rounded-xl font-bold transition-all duration-200 text-sm md:text-base
-                                            ${ocupado
+                      p-3 rounded-xl font-bold transition-all duration-200 text-sm md:text-base
+                      ${ocupado
                                                 ? "bg-red-500 text-white cursor-not-allowed"
                                                 : seleccionado
                                                     ? "bg-green-500 text-black"
                                                     : "bg-zinc-800 hover:bg-zinc-700"
                                             }
-                                        `}
+                    `}
                                     >
                                         {hora}
                                     </button>
