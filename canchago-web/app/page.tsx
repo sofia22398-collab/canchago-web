@@ -18,6 +18,7 @@ export default function Home() {
     const [horaFin, setHoraFin] = useState("20:00");
     const [usuario, setUsuario] = useState<any | null>(null);
     const [horariosOcupados, setHorariosOcupados] = useState<string[]>([]);
+    const [menuPerfilAbierto, setMenuPerfilAbierto] = useState(false);
 
     useEffect(() => {
         const usuarioGuardado = localStorage.getItem("usuario");
