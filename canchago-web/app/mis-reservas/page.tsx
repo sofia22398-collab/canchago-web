@@ -110,13 +110,22 @@ export default function MisReservasPage() {
                                                 Pago pendiente
                                             </p>
 
-                                            <p className="text-gray-300 text-sm mb-3">
-                                                Realizá el pago por SINPE y luego el administrador confirmará tu pago.
-                                            </p>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                                                <a
+                                                    href={`https://wa.me/50688888888?text=Hola,%20quiero%20pagar%20mi%20reserva%20%23${reserva.id}`}
+                                                    target="_blank"
+                                                    className="text-center bg-green-500 hover:bg-green-400 text-black py-3 rounded-xl font-bold"
+                                                >
+                                                    Pagar en línea
+                                                </a>
 
-                                            <p className="text-green-400 font-bold">
-                                                SINPE: 8888-8888
-                                            </p>
+                                                <button
+                                                    onClick={() => alert("Perfecto. Puedes pagar en el lugar el día de tu reserva.")}
+                                                    className="bg-zinc-700 hover:bg-zinc-600 text-white py-3 rounded-xl font-bold"
+                                                >
+                                                    Pagar en el lugar
+                                                </button>
+                                            </div>
                                         </div>
                                     )}
 
