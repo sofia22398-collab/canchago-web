@@ -155,7 +155,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto pb-28 md:pb-10">
 
                 <header className="mb-7">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-5">
 
                         <div>
                             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-green-500">
@@ -167,55 +167,66 @@ export default function Home() {
                             </p>
                         </div>
 
-                        <div className="space-y-3 lg:space-y-0 lg:flex lg:items-center lg:gap-4">
-                            <div className="flex gap-3 overflow-x-auto pb-2 lg:pb-0 lg:overflow-visible">
-                                {usuario?.rol === "Admin" && (
+                        <div className="relative w-full md:w-auto md:min-w-[260px]">
+                            <button
+                                onClick={() => setMenuPerfilAbierto(!menuPerfilAbierto)}
+                                className="flex items-center justify-between gap-3 w-full bg-zinc-900 border border-zinc-800 rounded-2xl px-4 py-3"
+                            >
+                                <div className="text-left">
+                                    <p className="font-bold text-green-400 leading-tight">
+                                        Hola, {usuario.nombre}
+                                    </p>
+
+                                    <p className="text-xs text-gray-400 break-all">
+                                        {usuario.correo}
+                                    </p>
+                                </div>
+
+                                <span className="text-gray-300 text-sm">
+                                    {menuPerfilAbierto ? "▲" : "▼"}
+                                </span>
+                            </button>
+
+                            {menuPerfilAbierto && (
+                                <div className="absolute right-0 mt-3 w-full bg-zinc-900 border border-zinc-800 rounded-2xl shadow-xl overflow-hidden z-50">
+                                    {usuario?.rol === "Admin" && (
+                                        <a
+                                            href="/admin"
+                                            className="block px-4 py-3 hover:bg-zinc-800 text-green-400 font-bold"
+                                        >
+                                            ⚙️ Admin
+                                        </a>
+                                    )}
+
                                     <a
-                                        href="/admin"
-                                        className="shrink-0 text-center bg-green-500 hover:bg-green-400 transition-all duration-200 text-black px-5 py-3 rounded-xl font-bold"
+                                        href="/perfil"
+                                        className="block px-4 py-3 hover:bg-zinc-800"
                                     >
-                                        Admin
+                                        👤 Editar perfil
                                     </a>
-                                )}
 
-                                <a
-                                    href="/calendario"
-                                    className="shrink-0 text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-5 py-3 rounded-xl font-bold"
-                                >
-                                    Calendario
-                                </a>
+                                    <a
+                                        href="/mi-actividad"
+                                        className="block px-4 py-3 hover:bg-zinc-800"
+                                    >
+                                        📊 Mi actividad
+                                    </a>
 
-                                <a
-                                    href="/mis-reservas"
-                                    className="shrink-0 text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-5 py-3 rounded-xl font-bold"
-                                >
-                                    Mis Reservas
-                                </a>
+                                    <a
+                                        href="/mis-pagos"
+                                        className="block px-4 py-3 hover:bg-zinc-800"
+                                    >
+                                        💳 Mis pagos
+                                    </a>
 
-                                <a
-                                    href="/partidos"
-                                    className="shrink-0 text-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 px-5 py-3 rounded-xl font-bold"
-                                >
-                                    Partidos
-                                </a>
-
-                                <button
-                                    onClick={cerrarSesion}
-                                    className="shrink-0 bg-red-500 hover:bg-red-400 transition-all duration-200 px-5 py-3 rounded-xl font-bold text-white"
-                                >
-                                    Cerrar sesión
-                                </button>
-                            </div>
-
-                            <div className="border-t border-zinc-800 pt-3 lg:border-t-0 lg:pt-0 lg:text-right">
-                                <p className="font-bold text-green-400 leading-tight">
-                                    Hola, {usuario.nombre}
-                                </p>
-
-                                <p className="text-xs sm:text-sm text-gray-400 break-all">
-                                    {usuario.correo}
-                                </p>
-                            </div>
+                                    <button
+                                        onClick={cerrarSesion}
+                                        className="w-full text-left px-4 py-3 text-red-400 hover:bg-zinc-800 font-bold"
+                                    >
+                                        🚪 Cerrar sesión
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </header>
@@ -224,6 +235,7 @@ export default function Home() {
                     <h2 className="text-xl sm:text-2xl font-bold mb-1">
                         Canchas disponibles
                     </h2>
+
                     <p className="text-sm text-gray-500">
                         Elegí una cancha para revisar horarios y reservar.
                     </p>
@@ -293,9 +305,7 @@ export default function Home() {
                             Selecciona fecha y horario.
                         </p>
 
-                        <label className="block mb-2 text-sm">
-                            Fecha
-                        </label>
+                        <label className="block mb-2 text-sm">Fecha</label>
 
                         <input
                             type="date"
@@ -323,14 +333,14 @@ export default function Home() {
                                         disabled={ocupado}
                                         onClick={() => seleccionarHora(hora)}
                                         className={`
-                      p-3 rounded-xl font-bold transition-all duration-200 text-sm md:text-base
-                      ${ocupado
+                    p-3 rounded-xl font-bold transition-all duration-200 text-sm md:text-base
+                    ${ocupado
                                                 ? "bg-red-500 text-white cursor-not-allowed"
                                                 : seleccionado
                                                     ? "bg-green-500 text-black"
                                                     : "bg-zinc-800 hover:bg-zinc-700"
                                             }
-                    `}
+                  `}
                                     >
                                         {hora}
                                     </button>
