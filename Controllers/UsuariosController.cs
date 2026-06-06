@@ -56,5 +56,43 @@ namespace CanchaGo.Controllers
 
             return Ok(usuario);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> ObtenerUsuario(int id)
+        {
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Id == id && u.Activo);
+
+            if (usuario == null)
+                return NotFound("Usuario no encontrado.");
+
+            return Ok(usuario);
+        }
+
+        [HttpPut("{id}/perfil")]
+        public async Task<IActionResult> ActualizarPerfil(int id, ActualizarPerfilDto dto)
+        {
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Id == id && u.Activo);
+
+            if (usuario == null)
+                return NotFound("Usuario no encontrado.");
+
+            var correoExiste = await _context.Usuarios
+                .AnyAsync(u => u.Correo == dto.Correo && u.Id != id);
+
+            if (correoExiste)
+                return BadRequest("Ya existe otro usuario con ese correo.");
+
+            usuario.Nombre = dto.Nombre;
+            usuario.Correo = dto.Correo;
+            usuario.Telefono = dto.Telefono;
+            usuario.Genero = dto.Genero;
+            usuario.FechaNacimiento = dto.FechaNacimiento;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(usuario);
+        }
     }
 }

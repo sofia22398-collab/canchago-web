@@ -20,5 +20,8 @@ namespace CanchaGo.Models
         public string Rol { get; set; } = "Cliente";
 
         public bool Activo { get; set; } = true;
+
+        public string? Genero { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
     }
 }
