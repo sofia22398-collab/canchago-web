@@ -76,7 +76,7 @@ export default function PartidosPage() {
 
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-5 mb-8">
                     <div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-green-500 mb-2">
+                        <h1 className="text-3xl md:text-5xl font-bold text-green-500 mb-2">
                             Partidos Abiertos
                         </h1>
 

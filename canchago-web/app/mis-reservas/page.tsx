@@ -59,7 +59,7 @@ export default function MisReservasPage() {
             <div className="max-w-5xl mx-auto">
                 <div className="flex justify-between items-center mb-10">
                     <div>
-                        <h1 className="text-5xl font-bold text-green-500 mb-2">
+                        <h1 className="text-3xl font-bold text-green-500 mb-2">
                             Mis Reservas
                         </h1>
 
