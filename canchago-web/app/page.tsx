@@ -191,32 +191,24 @@ export default function Home() {
                             {menuPerfilAbierto && (
                                 <div className="absolute right-0 mt-3 w-full bg-zinc-900 border border-zinc-800 rounded-2xl shadow-xl overflow-hidden z-50">
                                     {usuario?.rol === "Admin" && (
-                                        <a
-                                            href="/admin"
-                                            className="block px-4 py-3 hover:bg-zinc-800 text-green-400 font-bold"
-                                        >
-                                            ⚙️ Admin
+                                        <a href="/admin" className="block px-4 py-3 hover:bg-zinc-800 text-green-400 font-bold">
+                                            ⚙️ Administración
                                         </a>
                                     )}
 
-                                    <a
-                                        href="/perfil"
-                                        className="block px-4 py-3 hover:bg-zinc-800"
-                                    >
-                                        👤 Editar perfil
+                                    <a href="/perfil" className="block px-4 py-3 hover:bg-zinc-800">
+                                        👤 Mi perfil
                                     </a>
 
-                                    <a
-                                        href="/mi-actividad"
-                                        className="block px-4 py-3 hover:bg-zinc-800"
-                                    >
+                                    <a href="/mis-reservas" className="block px-4 py-3 hover:bg-zinc-800">
+                                        🎾 Mis reservas
+                                    </a>
+
+                                    <a href="/mi-actividad" className="block px-4 py-3 hover:bg-zinc-800">
                                         📊 Mi actividad
                                     </a>
 
-                                    <a
-                                        href="/mis-pagos"
-                                        className="block px-4 py-3 hover:bg-zinc-800"
-                                    >
+                                    <a href="/mis-pagos" className="block px-4 py-3 hover:bg-zinc-800">
                                         💳 Mis pagos
                                     </a>
 
