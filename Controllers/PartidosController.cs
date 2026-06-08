@@ -97,7 +97,7 @@ namespace CanchaGo.Controllers
                 return BadRequest("Ya existe un partido para esta reserva.");
 
             partido.Estado = "Abierto";
-            partido.FechaCreacion = DateTime.Now;
+            partido.FechaCreacion = DateTime.UtcNow;
 
             _context.Partidos.Add(partido);
             await _context.SaveChangesAsync();
@@ -106,7 +106,7 @@ namespace CanchaGo.Controllers
             {
                 PartidoId = partido.Id,
                 UsuarioId = partido.UsuarioCreadorId,
-                FechaUnion = DateTime.Now
+                FechaUnion = DateTime.UtcNow
             };
 
             _context.PartidoJugadores.Add(jugadorCreador);
@@ -153,7 +153,7 @@ namespace CanchaGo.Controllers
                 {
                     PartidoId = id,
                     UsuarioId = usuarioId,
-                    FechaUnion = DateTime.Now
+                    FechaUnion = DateTime.UtcNow
                 };
 
                 _context.PartidoJugadores.Add(jugador);
@@ -167,7 +167,14 @@ namespace CanchaGo.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                var mensaje = ex.ToString();
+
+                if (ex.InnerException != null)
+                {
+                    mensaje += "\n\nINNER:\n" + ex.InnerException.ToString();
+                }
+
+                return StatusCode(500, mensaje);
             }
         }
 
