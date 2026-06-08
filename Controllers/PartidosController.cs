@@ -118,41 +118,57 @@ namespace CanchaGo.Controllers
         [HttpPost("{id}/unirse/{usuarioId}")]
         public async Task<IActionResult> Unirse(int id, int usuarioId)
         {
-            var partido = await _context.Partidos
-                .Include(p => p.Jugadores)
-                .FirstOrDefaultAsync(p => p.Id == id);
-
-            if (partido == null)
-                return NotFound("El partido no existe.");
-
-            var usuarioExiste = await _context.Usuarios.AnyAsync(u => u.Id == usuarioId);
-
-            if (!usuarioExiste)
-                return NotFound("El usuario no existe.");
-
-            if (partido.Jugadores.Any(j => j.UsuarioId == usuarioId))
-                return BadRequest("Ya estás unido a este partido.");
-
-            if (partido.Jugadores.Count >= partido.CuposTotales)
+            try
             {
-                partido.Estado = "Completo";
+                var partido = await _context.Partidos
+                    .Include(p => p.Jugadores)
+                    .FirstOrDefaultAsync(p => p.Id == id);
+
+                if (partido == null)
+                    return NotFound("El partido no existe.");
+
+                var usuarioExiste = await _context.Usuarios
+                    .AnyAsync(u => u.Id == usuarioId);
+
+                if (!usuarioExiste)
+                    return NotFound("El usuario no existe.");
+
+                var yaEstaUnido = await _context.PartidoJugadores
+                    .AnyAsync(j => j.PartidoId == id && j.UsuarioId == usuarioId);
+
+                if (yaEstaUnido)
+                    return BadRequest("Ya estás unido a este partido.");
+
+                var cantidadJugadores = await _context.PartidoJugadores
+                    .CountAsync(j => j.PartidoId == id);
+
+                if (cantidadJugadores >= partido.CuposTotales)
+                {
+                    partido.Estado = "Completo";
+                    await _context.SaveChangesAsync();
+                    return BadRequest("El partido ya está completo.");
+                }
+
+                var jugador = new PartidoJugador
+                {
+                    PartidoId = id,
+                    UsuarioId = usuarioId,
+                    FechaUnion = DateTime.Now
+                };
+
+                _context.PartidoJugadores.Add(jugador);
+
+                if (cantidadJugadores + 1 >= partido.CuposTotales)
+                    partido.Estado = "Completo";
+
                 await _context.SaveChangesAsync();
-                return BadRequest("El partido ya está completo.");
+
+                return Ok("Te uniste al partido correctamente.");
             }
-
-            _context.PartidoJugadores.Add(new PartidoJugador
+            catch (Exception ex)
             {
-                PartidoId = id,
-                UsuarioId = usuarioId,
-                FechaUnion = DateTime.Now
-            });
-
-            if (partido.Jugadores.Count + 1 >= partido.CuposTotales)
-                partido.Estado = "Completo";
-
-            await _context.SaveChangesAsync();
-
-            return Ok("Te uniste al partido correctamente.");
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpDelete("{id}/salir/{usuarioId}")]
