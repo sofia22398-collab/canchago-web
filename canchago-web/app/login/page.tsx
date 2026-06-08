@@ -38,7 +38,7 @@ export default function LoginPage() {
             <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 md:p-8 w-full max-w-md shadow-xl">
 
                 <h1 className="text-4xl md:text-5xl font-bold text-green-500 mb-2 text-center">
-                    CanchaGo
+                    GoMatch
                 </h1>
 
                 <p className="text-gray-400 mb-6 text-center text-sm md:text-base">

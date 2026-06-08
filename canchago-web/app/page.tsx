@@ -129,7 +129,7 @@ export default function Home() {
             <main className="min-h-screen bg-black text-white flex items-center justify-center px-6">
                 <div className="max-w-md w-full text-center">
                     <h1 className="text-5xl sm:text-6xl font-bold text-green-500 mb-4">
-                        CanchaGo
+                        GoMatch
                     </h1>
 
                     <p className="text-gray-300 text-lg mb-2">
@@ -160,7 +160,7 @@ export default function Home() {
 
                         <div>
                             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-green-500">
-                                CanchaGo
+                                GoMatch
                             </h1>
 
                             <p className="text-gray-400 text-sm sm:text-base md:text-lg">
