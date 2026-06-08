@@ -18,5 +18,6 @@ namespace CanchaGo.Models
         public Partido? Partido { get; set; }
 
         public Usuario? Usuario { get; set; }
+        
     }
 }

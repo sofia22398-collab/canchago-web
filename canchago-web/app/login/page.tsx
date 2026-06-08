@@ -21,12 +21,16 @@ export default function LoginPage() {
         if (response.ok) {
             const usuario = await response.json();
 
-            localStorage.setItem(
-                "usuario",
-                JSON.stringify(usuario)
-            );
+            localStorage.setItem("usuario", JSON.stringify(usuario));
 
-            router.push("/");
+            const volverA = localStorage.getItem("volverA");
+
+            if (volverA) {
+                localStorage.removeItem("volverA");
+                router.push(volverA);
+            } else {
+                router.push("/");
+            }
         } else {
             alert("Correo o contraseña incorrectos.");
         }

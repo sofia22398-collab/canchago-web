@@ -116,25 +116,29 @@ namespace CanchaGo.Controllers
         }
 
         [HttpPost("{id}/unirse/{usuarioId}")]
-        public async Task<IActionResult> UnirsePartido(int id, int usuarioId)
+        public async Task<IActionResult> Unirse(int id, int usuarioId)
         {
             var partido = await _context.Partidos
                 .Include(p => p.Jugadores)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (partido == null)
-                return NotFound("Partido no encontrado.");
+                return NotFound("El partido no existe.");
 
-            if (partido.Estado != "Abierto")
-                return BadRequest("El partido no está abierto.");
+            var usuarioExiste = await _context.Usuarios.AnyAsync(u => u.Id == usuarioId);
 
-            var yaEsta = partido.Jugadores.Any(j => j.UsuarioId == usuarioId);
+            if (!usuarioExiste)
+                return NotFound("El usuario no existe.");
 
-            if (yaEsta)
+            if (partido.Jugadores.Any(j => j.UsuarioId == usuarioId))
                 return BadRequest("Ya estás unido a este partido.");
 
             if (partido.Jugadores.Count >= partido.CuposTotales)
-                return BadRequest("El partido ya está lleno.");
+            {
+                partido.Estado = "Completo";
+                await _context.SaveChangesAsync();
+                return BadRequest("El partido ya está completo.");
+            }
 
             _context.PartidoJugadores.Add(new PartidoJugador
             {
@@ -144,9 +148,7 @@ namespace CanchaGo.Controllers
             });
 
             if (partido.Jugadores.Count + 1 >= partido.CuposTotales)
-            {
                 partido.Estado = "Completo";
-            }
 
             await _context.SaveChangesAsync();
 
