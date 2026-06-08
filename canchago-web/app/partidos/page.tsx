@@ -20,6 +20,10 @@ export default function PartidosPage() {
         obtenerPartidos();
     }, []);
 
+    function getUsuarioId() {
+        return usuario?.id ?? usuario?.Id ?? usuario?.usuarioId;
+    }
+
     async function obtenerPartidos() {
         const response = await fetch("https://canchago-api.onrender.com/api/Partidos");
         const data = await response.json();
@@ -27,29 +31,56 @@ export default function PartidosPage() {
     }
 
     async function unirse(partidoId: number) {
-        if (!usuario) return;
+        try {
+            const usuarioId = getUsuarioId();
 
-        const response = await fetch(
-            `https://canchago-api.onrender.com/api/Partidos/${partidoId}/unirse/${usuario.id}`,
-            {
-                method: "POST",
+            if (!usuarioId) {
+                alert("No se encontró el usuario. Cerrá sesión e iniciá sesión nuevamente.");
+                console.log("Usuario guardado:", usuario);
+                return;
             }
-        );
 
-        if (response.ok) {
+            console.log("Partido:", partidoId);
+            console.log("Usuario:", usuarioId);
+
+            const response = await fetch(
+                `https://canchago-api.onrender.com/api/Partidos/${partidoId}/unirse/${usuarioId}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            const texto = await response.text();
+
+            console.log("Status:", response.status);
+            console.log("Respuesta:", texto);
+
+            if (!response.ok) {
+                alert(texto || "No se pudo unir al partido.");
+                return;
+            }
+
             alert("Te uniste al partido correctamente.");
-            obtenerPartidos();
-        } else {
-            const error = await response.text();
-            alert(error);
+            await obtenerPartidos();
+        } catch (error) {
+            console.error(error);
+            alert("Error conectando con el servidor.");
         }
     }
 
     async function salir(partidoId: number) {
-        if (!usuario) return;
+        const usuarioId = getUsuarioId();
+
+        if (!usuarioId) {
+            alert("No se encontró el ID del usuario.");
+            return;
+        }
 
         const response = await fetch(
-            `https://canchago-api.onrender.com/api/Partidos/${partidoId}/salir/${usuario.id}`,
+            `https://canchago-api.onrender.com/api/Partidos/${partidoId}/salir/${usuarioId}`,
             {
                 method: "DELETE",
             }
@@ -60,13 +91,36 @@ export default function PartidosPage() {
             obtenerPartidos();
         } else {
             const error = await response.text();
-            alert(error);
+            alert(error || "No se pudo salir del partido.");
         }
     }
 
+    function compartirWhatsApp(partido: any) {
+        const link = `${window.location.origin}/partido/${partido.id}`;
+
+        const mensaje = `⚽ Unite a mi partido en GoMatch
+
+${partido.titulo ?? "Partido abierto"}
+
+🏟️ Cancha: ${partido.reserva?.cancha?.nombre ?? "Sin cancha"}
+📅 Fecha: ${partido.reserva?.fecha?.substring(0, 10)}
+⏰ Hora: ${partido.reserva?.horaInicio?.substring(0, 5)} - ${partido.reserva?.horaFin?.substring(0, 5)}
+🎯 Nivel: ${partido.nivel ?? "Libre"}
+
+Unite aquí:
+${link}`;
+
+        window.open(
+            `https://wa.me/?text=${encodeURIComponent(mensaje)}`,
+            "_blank"
+        );
+    }
+
     function usuarioEstaUnido(partido: any) {
+        const usuarioId = getUsuarioId();
+
         return partido.jugadores?.some(
-            (j: any) => j.usuarioId === usuario?.id
+            (j: any) => j.usuarioId === usuarioId || j.usuario?.id === usuarioId
         );
     }
 
@@ -118,13 +172,11 @@ export default function PartidosPage() {
 
                                             <p className="text-gray-300">
                                                 Cancha:{" "}
-                                                {partido.reserva?.cancha?.nombre ??
-                                                    "Sin cancha"}
+                                                {partido.reserva?.cancha?.nombre ?? "Sin cancha"}
                                             </p>
 
                                             <p className="text-gray-300">
-                                                Fecha:{" "}
-                                                {partido.reserva?.fecha?.substring(0, 10)}
+                                                Fecha: {partido.reserva?.fecha?.substring(0, 10)}
                                             </p>
 
                                             <p className="text-gray-300">
@@ -154,7 +206,17 @@ export default function PartidosPage() {
                                             </p>
                                         </div>
 
-                                        <div className="w-full sm:w-40">
+                                        <div className="w-full sm:w-52 flex flex-col gap-3">
+
+                                            <button
+                                                onClick={() => {
+                                                    alert("Usuario: " + JSON.stringify(usuario));
+                                                }}
+                                                className="w-full bg-blue-500 hover:bg-blue-400 text-white py-3 rounded-xl font-bold"
+                                            >
+                                                Ver Usuario
+                                            </button>
+
                                             {partido.estado === "Abierto" && !estaUnido && (
                                                 <button
                                                     onClick={() => unirse(partido.id)}
@@ -172,6 +234,13 @@ export default function PartidosPage() {
                                                     Salir
                                                 </button>
                                             )}
+
+                                            <button
+                                                onClick={() => compartirWhatsApp(partido)}
+                                                className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white py-3 rounded-xl font-bold"
+                                            >
+                                                Compartir WhatsApp
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
